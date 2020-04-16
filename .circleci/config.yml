@@ -1,9 +1,8 @@
 version: 2.1
 executors:
   my-executor:
-    working_directory: ~/src
-    docker:
-      - image: circleci/node:lts
+    
+
 
 commands:
   install_deps:
@@ -14,9 +13,14 @@ commands:
 
 jobs:
   build:
-    executor: my-executor
+    docker:
+      - image: circleci/node:lts
+
+    working_directory: ~/project/src
+
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - install_deps
       - run:
           name: run unit test
