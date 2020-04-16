@@ -1,0 +1,29 @@
+version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:lts
+    working_directory: ./src
+
+commands:
+  install_deps:
+    steps:
+      - run:
+          name: Install dependencies
+          command: npm install
+
+jobs:
+  build:
+    executor: my-executor
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run unit test
+          command: npm run test-unit
+
+workflows:
+  version: 2
+  build-test-package:
+    jobs:
+      - build
