@@ -4,8 +4,6 @@ executors:
     docker:
       - image: circleci/node:lts
 
-    working_directory: ~/src
-
 commands:
   install_deps:
     steps:
