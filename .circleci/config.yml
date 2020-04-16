@@ -1,7 +1,7 @@
 version: 2.1
 executors:
   my-executor:
-    working_directory: ~/project/src
+    working_directory: ~/project/src/src
     docker:
       - image: circleci/node:lts
 
