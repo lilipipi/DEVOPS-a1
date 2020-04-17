@@ -8,8 +8,11 @@ describe('createtask', () => {
 
   beforeAll(async () => {
     try {
+      console.log("start clearing DB")
       await clearDB();
+      console.log("finished clearing DB, launching browser")
       browser = await launch({ url: "http://localhost:3000/" });
+      console.log("browser launched")
     }catch(err) {
       console.error(err);
     }

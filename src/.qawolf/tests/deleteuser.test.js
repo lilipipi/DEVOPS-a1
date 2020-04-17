@@ -6,8 +6,15 @@ describe('deleteuser', () => {
   let browser;
 
   beforeAll(async () => {
-    await clearDB();
-    browser = await launch({ url: "http://localhost:3000/" });
+    try {
+      console.log("start clearing DB")
+      await clearDB();
+      console.log("finished clearing DB, launching browser")
+      browser = await launch({ url: "http://localhost:3000/" });
+      console.log("browser launched")
+    }catch(err) {
+      console.error(err);
+    }
   });
 
   afterAll(async() => {
