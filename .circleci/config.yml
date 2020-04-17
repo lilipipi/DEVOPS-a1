@@ -57,12 +57,19 @@ jobs:
   e2e-test:
     docker:
       - image: circleci/node:lts-browsers
+        environment:
+          DB_USERNAME: postgres 
+          DB_PASSWORD: password 
+          DB_NAME: servian 
+          DB_HOSTNAME: localhost
       - image: circleci/postgres:latest
         environment:
           POSTGRES_DB: servian
           POSTGRES_PASSWORD: password
           POSTGRES_USER: postgres
       - image: qawolf/playwright-ci:v0.9.0
+        environment:
+          QAW_HEADLESS: true
     working_directory: ~/project/src
     steps:
       - checkout:
@@ -74,9 +81,16 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m         
           background: true 
       - run:
+          name: start background server
           command: |
             npm run start & 
             npx wait-on http://localhost:3000
+          environment:
+            POSTGRES_DB: servian
+            POSTGRES_PASSWORD: password
+            POSTGRES_USER: postgres
+      - run:
+          command: |
             npm run test-e2e
           environment:
             # configure tests with environment variables
