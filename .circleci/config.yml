@@ -1,8 +1,4 @@
 version: 2.1
-executors:
-  my-executor:
-    
-
 
 commands:
   install_deps:
@@ -25,6 +21,10 @@ jobs:
       - run:
           name: run unit test
           command: npm run test-unit
+      - run:
+          name: validate code coverage
+          command: bash <(curl -s https://codecov.io/bash) 
+
 
 workflows:
   version: 2
