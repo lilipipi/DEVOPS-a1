@@ -4,16 +4,18 @@ const clearDB = require('../clear-db');
 
 describe('deleteuser', () => {
   let browser;
+  let page;
 
   beforeAll(async () => {
     try {
-      console.log("start clearing DB")
       await clearDB();
-      console.log("finished clearing DB, launching browser")
     }catch(err) {
       console.error(err);
     }
     browser = await launch({ url: "http://localhost:3000/" });
+    const context = await browser.newContext();
+    await qawolf.register(context);
+    page = context.newPage();
   });
 
   afterAll(async() => {
@@ -23,6 +25,8 @@ describe('deleteuser', () => {
       console.log(err);
     }
   });
+
+  browser = await page.goto('http://localhost:3000/')
   
   it('can click "username" input', async () => {
     await browser.click(selectors[0]);

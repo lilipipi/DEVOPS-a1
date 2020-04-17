@@ -7,15 +7,11 @@ describe('deletetask', () => {
 
   beforeAll(async () => {
     try {
-      console.log("start clearing DB")
       await clearDB();
-      console.log("finished clearing DB, launching browser")
-
-      console.log("browser launched")
     }catch(err) {
       console.error(err);
     }
-    browser = await launch({ url: "http://localhost:3000/" });
+    browser = await launch({ url: 'http://localhost:3000/' });
   });
 
   afterAll(async () => {
