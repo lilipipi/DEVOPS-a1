@@ -74,7 +74,9 @@ jobs:
       
       - run:
           name: start server in background
-          command: npm start &
+          command: |             
+          npm run start & 
+          npx wait-on http://localhost:3000
 
       - run:
           command: |

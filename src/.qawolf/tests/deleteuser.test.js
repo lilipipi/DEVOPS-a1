@@ -4,19 +4,10 @@ const clearDB = require('../clear-db');
 
 describe('deleteuser', () => {
   let browser;
-  let page;
 
   beforeAll(async () => {
-    try {
-      await clearDB();
-    }catch(err) {
-      console.error(err);
-    }
-    browser = await launch();
-    const context = await browser.newContext();
-    await qawolf.register(context);
-    page = context.newPage();
-    await page.goto('http://127.0.0.1:3000/')
+    await clearDB();
+    browser = await launch({ url: "http://localhost:3000/" });
   });
 
   afterAll(async() => {
@@ -26,38 +17,36 @@ describe('deleteuser', () => {
       console.log(err);
     }
   });
-
-
   
   it('can click "username" input', async () => {
-    await page.click(selectors[0]);
+    await browser.click(selectors[0]);
   });
   
   it('can clear "username" input', async () => {
-    await page.type(selectors[1], "TestUser");
+    await browser.type(selectors[1], "TestUser");
   });
   
   it("can click input", async () => {
-    await page.click(selectors[2]);
+    await browser.click(selectors[2]);
   });
   
   it('can click "title" input', async () => {
-    await page.click(selectors[3]);
+    await browser.click(selectors[3]);
   });
   
   it('can clear "title" input', async () => {
-    await page.type(selectors[4], "Task 1");
+    await browser.type(selectors[4], "Task 1");
   });
   
   it("can click input", async () => {
-    await page.click(selectors[5]);
-    const hasText = await page.hasText("Task 1");
+    await browser.click(selectors[5]);
+    const hasText = await browser.hasText("Task 1");
     expect(hasText).toBe(true);
   });
   
   it('can click "delete" link', async () => {
-    await page.click(selectors[6]);
-    const hasText = await page.hasText("Task 1");
+    await browser.click(selectors[6]);
+    const hasText = await browser.hasText("Task 1");
     expect(hasText).toBe(false);
   });
 });
