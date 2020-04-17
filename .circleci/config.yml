@@ -56,6 +56,7 @@ jobs:
 
   e2e-test:
     docker:
+      - image: circleci/node:lts
       - image: qawolf/playwright-ci:v0.9.0
       - image: circleci/postgres:latest
         environment:
