@@ -54,6 +54,36 @@ jobs:
           name: Run integration tests
           command: npm run test-integration
 
+  e2e-test:
+    docker:
+      - image: qawolf/playwright-ci:v0.9.0
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_DB: servian
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+    working_directory: ~/project/src
+    steps:
+      - checkout:
+          path: ~/project
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+
+      - install_deps
+
+      - run: 
+          name: wait for database
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          command: npm run test-e2e
+
 
 workflows:
   version: 2
@@ -61,5 +91,9 @@ workflows:
     jobs:
       - build
       - integration-tests:
-         requires:
+          requires:
            - build
+      - e2e-test:
+          requires:
+            - build
+            - integration-tests
