@@ -39,8 +39,9 @@ jobs:
       - image: circleci/node:lts
       - image: circleci/postgres:latest
           environment:
-            POSTGRES_USER: postgres
-            POSTGRES_DB: servian
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_NAME}
+            POSTGRES_USER: ${DB_USERNAME}
     working_directory: ~/project/src
     steps:
       - checkout:
