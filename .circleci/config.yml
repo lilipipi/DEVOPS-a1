@@ -38,10 +38,10 @@ jobs:
     docker:
       - image: circleci/node:lts
       - image: circleci/postgres:latest
-          environment:
-            POSTGRES_PASSWORD: ${DB_PASSWORD}
-            POSTGRES_DB: ${DB_NAME}
-            POSTGRES_USER: ${DB_USERNAME}
+        environment:
+          POSTGRES_PASSWORD: ${DB_PASSWORD}
+          POSTGRES_DB: ${DB_NAME}
+          POSTGRES_USER: ${DB_USERNAME}
     working_directory: ~/project/src
     steps:
       - checkout:
