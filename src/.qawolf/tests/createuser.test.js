@@ -7,7 +7,7 @@ describe('createuser', () => {
 
   beforeAll(async () => {
     await clearDB();
-    browser = await launch({ url: "http://localhost:3000/" });
+    browser = await launch({url:"http://localhost:3000/"});
   });
 
   afterAll(async () => {

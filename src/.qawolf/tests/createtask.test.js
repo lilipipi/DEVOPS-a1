@@ -7,12 +7,8 @@ describe('createtask', () => {
   let browser;
 
   beforeAll(async () => {
-    try {
-      await clearDB();
-      browser = await launch({ url: "http://localhost:3000/" });
-    }catch(err) {
-      console.error(err);
-    }
+    await clearDB();
+    browser = await launch({url:"http://localhost:3000/"});
   });
 
   afterAll(async () => {
