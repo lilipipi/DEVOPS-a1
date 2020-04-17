@@ -67,6 +67,7 @@ jobs:
     steps:
       - checkout:
           path: ~/project
+      - install_deps
 
       - run: 
           name: wait for database
