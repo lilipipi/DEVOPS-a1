@@ -12,7 +12,7 @@ describe('createtask', () => {
     }catch(err) {
       console.error(err);
     }
-    browser = await launch({ url: "http://localhost:3000/" });
+    browser = await launch();
     const context = await browser.newContext();
     await qawolf.register(context);
     page = context.newPage();

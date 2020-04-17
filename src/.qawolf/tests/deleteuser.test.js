@@ -12,11 +12,11 @@ describe('deleteuser', () => {
     }catch(err) {
       console.error(err);
     }
-    browser = await launch({ url: "http://localhost:3000/" });
+    browser = await launch();
     const context = await browser.newContext();
     await qawolf.register(context);
     page = context.newPage();
-    await page.goto('http://localhost:3000/')
+    await page.goto('http://127.0.0.1:3000/')
   });
 
   afterAll(async() => {
