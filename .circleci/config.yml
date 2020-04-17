@@ -78,6 +78,9 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: start browser
+          command: npm start
             
       - run: 
           name: wait for database
