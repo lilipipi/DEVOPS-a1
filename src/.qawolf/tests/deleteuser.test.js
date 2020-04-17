@@ -16,6 +16,7 @@ describe('deleteuser', () => {
     const context = await browser.newContext();
     await qawolf.register(context);
     page = context.newPage();
+    await page.goto('http://localhost:3000/')
   });
 
   afterAll(async() => {
@@ -26,7 +27,7 @@ describe('deleteuser', () => {
     }
   });
 
-  await page.goto('http://localhost:3000/')
+
   
   it('can click "username" input', async () => {
     await page.click(selectors[0]);
