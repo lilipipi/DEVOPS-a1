@@ -82,9 +82,9 @@ jobs:
             # configure tests with environment variables
             QAW_ARTIFACT_PATH: /tmp/artifacts
             QAW_HEADLESS: true
-            POSTGRES_DB: servian
-            POSTGRES_PASSWORD: password
-            POSTGRES_USER: postgres
+            DB_NAME: servian
+            DB_PASSWORD: password
+            DB_USERNAME: postgres
       - store_artifacts:
           path: /tmp/artifacts
 
