@@ -57,8 +57,7 @@ jobs:
   e2e-test:
     docker:
       - image: qawolf/playwright-ci:v0.9.0
-      - image: circleci/node:lts-browsers:chrome
-      - image: circleci/postgres:latest
+      - image: circleci/node:lts-browsers
         environment:
           POSTGRES_DB: servian
           POSTGRES_PASSWORD: password
