@@ -74,8 +74,8 @@ jobs:
             npm run test-e2e
           environment:
             # configure tests with environment variables
+            QAW_HEADLESS: "TRUE"
             QAW_ARTIFACT_PATH: /tmp/artifacts
-            QAW_HEADLESS: true
       - store_artifacts:
           path: /tmp/artifacts
 
