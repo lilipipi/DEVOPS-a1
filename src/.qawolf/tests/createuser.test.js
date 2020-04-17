@@ -11,7 +11,11 @@ describe('createuser', () => {
     }catch(err) {
       console.error(err);
     }
-    browser = await launch({ url: 'http://localhost:3000/' });
+    browser = await launch({ url: "http://localhost:3000/" });
+    const context = await browser.newContext();
+    await qawolf.register(context);
+    page = context.newPage();
+    await page.goto('http://localhost:3000/')
   });
 
   afterAll(async () => {
@@ -23,16 +27,16 @@ describe('createuser', () => {
   });
   
   it('can click "username" input', async () => {
-    await browser.click(selectors[0]);
+    await page.click(selectors[0]);
   });
   
   it('can clear "username" input', async () => {
-    await browser.type(selectors[1], "TestUser");
+    await page.type(selectors[1], "TestUser");
   });
   
   it("can click input", async () => {
-    await browser.click(selectors[2]);
-    const hasText = await browser.hasText("TestUser");
+    await page.click(selectors[2]);
+    const hasText = await page.hasText("TestUser");
     expect(hasText).toBe(true);
   });
 });
