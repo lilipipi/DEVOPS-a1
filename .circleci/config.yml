@@ -68,17 +68,13 @@ jobs:
       - checkout:
           path: ~/project
 
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - install_deps
-
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
       - run: 
           name: wait for database
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      
+      - run:
+          name: start server in background
+          command: npm start &
 
       - run:
           command: |
