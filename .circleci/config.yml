@@ -22,7 +22,7 @@ jobs:
       - run:
           name: run linting
           command: npm run test-lint
-          
+
       - run:
           name: run unit test
           command: npm run test-unit
@@ -34,9 +34,23 @@ jobs:
           name: validate code coverage
           command: bash <(curl -s https://codecov.io/bash) 
 
+  integration-tests:
+    docker:
+      - image: circleci/node:lts
+      - image: circleci/postgres:9.6.2-alpine
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: Run integration tests
+          command: npm run test-integration
+
 
 workflows:
   version: 2
   build-test-package:
     jobs:
       - build
+      - integration-tests:
+         requires:
+           - build
