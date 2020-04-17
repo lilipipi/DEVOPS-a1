@@ -76,7 +76,7 @@ jobs:
 
       - run:
           command: |
-            npm run start:prod & 
+            npm run start & 
             npx wait-on http://localhost:3000
             npm run test-e2e
           environment:
