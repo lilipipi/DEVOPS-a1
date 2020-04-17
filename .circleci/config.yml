@@ -58,6 +58,7 @@ jobs:
     docker:
       - image: qawolf/playwright-ci:v0.9.0
       - image: circleci/node:lts-browsers
+      - image: circleci/postgres:latest
         environment:
           POSTGRES_DB: servian
           POSTGRES_PASSWORD: password
