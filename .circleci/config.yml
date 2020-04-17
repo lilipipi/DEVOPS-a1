@@ -18,10 +18,15 @@ jobs:
       - checkout:
           path: ~/project
       - install_deps
+      
+      - run:
+          name: run linting
+          command: npm run test-lint
+          
       - run:
           name: run unit test
           command: npm run test-unit
-          
+
       - store_test_results:
           path: test_outputs
 
