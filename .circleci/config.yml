@@ -47,9 +47,6 @@ jobs:
       - checkout:
           path: ~/project
       - install_deps
-      - run: 
-          name: wait for database
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Run integration tests
           command: npm run test-integration
@@ -64,8 +61,6 @@ jobs:
           POSTGRES_DB: servian
           POSTGRES_PASSWORD: password
           POSTGRES_USER: postgres
-      - image: qawolf/playwright-ci:v0.9.0
-        environment:
     working_directory: ~/project/src
     steps:
       - checkout:
@@ -107,3 +102,4 @@ workflows:
       - e2e-test:
           requires:
             - build
+            - integration-tests
