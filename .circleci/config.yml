@@ -10,7 +10,7 @@ commands:
 jobs:
   build:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:lts-browsers
 
     working_directory: ~/project/src
 
@@ -36,7 +36,7 @@ jobs:
 
   integration-tests:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:lts-browsers
       - image: circleci/postgres:latest
         environment:
           POSTGRES_DB: servian
@@ -56,7 +56,7 @@ jobs:
 
   e2e-test:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:lts-browsers
       - image: circleci/postgres:latest
         environment:
           POSTGRES_DB: servian
@@ -82,9 +82,6 @@ jobs:
             # configure tests with environment variables
             QAW_ARTIFACT_PATH: /tmp/artifacts
             QAW_HEADLESS: true
-            DB_NAME: servian
-            DB_PASSWORD: password
-            DB_USERNAME: postgres
       - store_artifacts:
           path: /tmp/artifacts
 
@@ -100,4 +97,3 @@ workflows:
       - e2e-test:
           requires:
             - build
-            - integration-tests
