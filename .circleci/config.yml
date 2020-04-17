@@ -56,13 +56,13 @@ jobs:
 
   e2e-test:
     docker:
-      - image: qawolf/playwright-ci:v0.9.0
       - image: circleci/node:lts-browsers
       - image: circleci/postgres:latest
         environment:
           POSTGRES_DB: servian
           POSTGRES_PASSWORD: password
           POSTGRES_USER: postgres
+      - image: qawolf/playwright-ci:v0.9.0
     working_directory: ~/project/src
     steps:
       - checkout:
@@ -76,10 +76,6 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: start browser
-          command: npm start
-
       - run: 
           name: wait for database
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
