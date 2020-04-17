@@ -39,15 +39,17 @@ jobs:
       - image: circleci/node:lts
       - image: circleci/postgres:latest
         environment:
-          POSTGRES_PASSWORD: ${DB_PASSWORD}
-          POSTGRES_DB: ${DB_NAME}
-          POSTGRES_USER: ${DB_USERNAME}
+          POSTGRES_DB: servian
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
     working_directory: ~/project/src
     steps:
       - checkout:
           path: ~/project
       - install_deps
-
+      - run: 
+          name: wait for database
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Run integration tests
           command: npm run test-integration
