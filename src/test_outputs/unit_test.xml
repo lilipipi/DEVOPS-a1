@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="0.1390" tests="3" failures="1">
-  <testsuite name="Root Suite" timestamp="2020-04-17T05:01:43" tests="0" time="0.0000" failures="0">
+<testsuites name="Mocha Tests" time="0.1460" tests="3" failures="0">
+  <testsuite name="Root Suite" timestamp="2020-04-17T08:35:02" tests="0" time="0.0000" failures="0">
   </testsuite>
-  <testsuite name="models/index" timestamp="2020-04-17T05:01:43" tests="2" file="/home/hung/Documents/Programming/DEVOPS/DEVOPS-assignment1/assessment1/assessment1/src/test/unit/index.test.js" time="0.1320" failures="1">
-    <testcase name="models/index returns the task model" time="0.1320" classname="returns the task model">
-      <failure message="expected Tasks to be falsy" type="Error"><![CDATA[Error: expected Tasks to be falsy
-    at Assertion.assert (node_modules/expect.js/index.js:96:13)
-    at Assertion.ok (node_modules/expect.js/index.js:115:10)
-    at Function.ok (node_modules/expect.js/index.js:499:17)
-    at Context.<anonymous> (test/unit/index.test.js:8:36)
-    at processImmediate (internal/timers.js:456:21)]]></failure>
+  <testsuite name="models/index" timestamp="2020-04-17T08:35:02" tests="2" file="/home/hung/Documents/Programming/DEVOPS/DEVOPS-assignment1/assessment1/assessment1/src/test/unit/index.test.js" time="0.1390" failures="0">
+    <testcase name="models/index returns the task model" time="0.1380" classname="returns the task model">
     </testcase>
-    <testcase name="models/index returns the user model" time="0.0000" classname="returns the user model">
+    <testcase name="models/index returns the user model" time="0.0010" classname="returns the user model">
     </testcase>
   </testsuite>
-  <testsuite name="models/task" timestamp="2020-04-17T05:01:43" tests="0" file="/home/hung/Documents/Programming/DEVOPS/DEVOPS-assignment1/assessment1/assessment1/src/test/unit/task.test.js" time="0.0000" failures="0">
+  <testsuite name="models/task" timestamp="2020-04-17T08:35:02" tests="0" file="/home/hung/Documents/Programming/DEVOPS/DEVOPS-assignment1/assessment1/assessment1/src/test/unit/task.test.js" time="0.0000" failures="0">
   </testsuite>
-  <testsuite name="create" timestamp="2020-04-17T05:01:43" tests="1" file="/home/hung/Documents/Programming/DEVOPS/DEVOPS-assignment1/assessment1/assessment1/src/test/unit/task.test.js" time="0.0070" failures="0">
+  <testsuite name="create" timestamp="2020-04-17T08:35:02" tests="1" file="/home/hung/Documents/Programming/DEVOPS/DEVOPS-assignment1/assessment1/assessment1/src/test/unit/task.test.js" time="0.0070" failures="0">
     <testcase name="models/task create creates a task" time="0.0070" classname="creates a task">
     </testcase>
   </testsuite>
