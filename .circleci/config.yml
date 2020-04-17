@@ -78,6 +78,10 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+            
+      - run: 
+          name: wait for database
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
           command: |
