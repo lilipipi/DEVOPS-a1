@@ -81,7 +81,7 @@ jobs:
 
       - run:
           command: |
-            npm run test-e2e
+            npx qawolf test .qawolf/tests
           environment:
             # configure tests with environment variables
             QAW_ARTIFACT_PATH: /tmp/artifacts
