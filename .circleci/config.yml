@@ -21,6 +21,10 @@ jobs:
       - run:
           name: run unit test
           command: npm run test-unit
+          
+      - store_test_results:
+          path: test_outputs
+
       - run:
           name: validate code coverage
           command: bash <(curl -s https://codecov.io/bash) 
