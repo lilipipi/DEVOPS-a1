@@ -70,9 +70,7 @@ jobs:
 
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
-
-      - run:
-          command: npm install
+      - install_deps
 
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
@@ -81,7 +79,7 @@ jobs:
       - run:
           name: start browser
           command: npm start
-            
+
       - run: 
           name: wait for database
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
