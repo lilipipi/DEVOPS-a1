@@ -67,25 +67,18 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-
       - install_deps
-
       - run: 
           name: wait for database
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
 
       - run:
           command: npm run test-e2e
           environment:
             QAW_HEADLESS: true
+            POSTGRES_DB: servian
+            POSTGRES_PASSWORD: password
+            POSTGRES_USER: postgres
 
 
 workflows:
